@@ -7,7 +7,7 @@ public class PathfindAlgorithm : MonoBehaviour
     public Cell startPoint;
     public Cell endPoint;
 
-    private bool mazeSolved = false;
+    //private bool mazeSolved = false;
 
     private void Start()
     {
