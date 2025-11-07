@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class TestingPath : MonoBehaviour
 {
-    [SerializeField] private PathfindingVisual pathfindingVisual;
+    //[SerializeField] private PathfindingVisual pathfindingVisual;
     Pathfinding pathfinding;
 
     void Start()
     {
         pathfinding = new Pathfinding(10, 10);
-        pathfindingVisual.SetGrid(pathfinding.GetGrid());
+        //pathfindingVisual.SetGrid(pathfinding.GetGrid());
     }
 
     void Update()
