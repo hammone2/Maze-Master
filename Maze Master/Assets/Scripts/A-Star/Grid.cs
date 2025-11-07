@@ -33,7 +33,7 @@ public class Grid<TGridOject>
             }
         }
 
-        bool showDebug = false;
+        bool showDebug = true;
         if (showDebug)
         {
             TextMesh[,] debugTextArray = new TextMesh[width, height];
@@ -84,7 +84,7 @@ public class Grid<TGridOject>
         y = Mathf.FloorToInt((worldPosition - originPosition).y / cellSize);
     }
 
-    public void SetGridOject(int x, int y, TGridOject value)
+    public void SetGridObject(int x, int y, TGridOject value)
     {
         if (0 <= x && 0 <= y && x < width && y < height)
         {
@@ -100,14 +100,14 @@ public class Grid<TGridOject>
             OnGridValueChanged(this, new OnGridValueChangedEventArg { x = x, y = y });
     }
 
-    public void SetGridOject(Vector3 worldPosition, TGridOject value)
+    public void SetGridObject(Vector3 worldPosition, TGridOject value)
     {
         int x, y;
         GetXY(worldPosition, out x, out y);
-        SetGridOject(x, y, value);
+        SetGridObject(x, y, value);
     }
 
-    public TGridOject GetGridOject(int x, int y)
+    public TGridOject GetGridObject(int x, int y)
     {
         if (0 <= x && 0 <= y && x < width && y < height)
         {
@@ -120,6 +120,6 @@ public class Grid<TGridOject>
     {
         int x, y;
         GetXY(worldPosition, out x, out y);
-        return GetGridOject(x, y);
+        return GetGridObject(x, y);
     }
 }

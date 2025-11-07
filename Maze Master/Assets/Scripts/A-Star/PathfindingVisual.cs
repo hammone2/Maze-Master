@@ -45,7 +45,7 @@ public class PathfindingVisual : MonoBehaviour
                 int index = x * grid.GetHeight() + y;
                 Vector3 quadSize = new Vector3(1, 1) * grid.GetCellSize();
 
-                PathNode pathNode = grid.GetGridOject(x, y);
+                PathNode pathNode = grid.GetGridObject(x, y);
 
                 if (pathNode.isWalkable)
                 {
