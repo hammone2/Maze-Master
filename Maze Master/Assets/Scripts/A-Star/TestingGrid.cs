@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Testing : MonoBehaviour
+public class TestingGrid : MonoBehaviour
 {
     [SerializeField] int gridWidth;
     [SerializeField] int gridHeight;
@@ -17,16 +17,6 @@ public class Testing : MonoBehaviour
     void Update()
     {
         Vector3 position = GetMouseWorldPosition.getMouseWorldPosition();
-        // if (Input.GetMouseButtonDown(0))
-        // {
-        //     StringGridObject mapGridObject = grid.GetGridOject(position);
-        //     if (mapGridObject != null)
-        //     {
-        //         mapGridObject.Addvalue(5); // IntMapFGridObject
-
-        //     }
-        //     //grid.SetGridOject(GetMouseWorldPosition.getMouseWorldPosition(), true);
-        // }
 
         if (Input.GetKeyDown(KeyCode.A)) { grid.GetGridOject(position).AddLetter("A"); }
         if (Input.GetKeyDown(KeyCode.B)) { grid.GetGridOject(position).AddLetter("B"); }
