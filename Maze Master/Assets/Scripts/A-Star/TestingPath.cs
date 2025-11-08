@@ -3,13 +3,12 @@ using UnityEngine;
 
 public class TestingPath : MonoBehaviour
 {
-    //[SerializeField] private PathfindingVisual pathfindingVisual;
     Pathfinding pathfinding;
+    [SerializeField] private float cellSize = 1f;
 
     void Start()
     {
-        pathfinding = new Pathfinding(10, 10);
-        //pathfindingVisual.SetGrid(pathfinding.GetGrid());
+        pathfinding = new Pathfinding(10, 10, cellSize);
     }
 
     void Update()
@@ -36,5 +35,4 @@ public class TestingPath : MonoBehaviour
             pathfinding.GetNode(x, y).SetIsWalkable(!pathfinding.GetNode(x, y).isWalkable);
         }
     }
-
 }
