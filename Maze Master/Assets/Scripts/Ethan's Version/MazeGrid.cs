@@ -1,18 +1,26 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class MazeGrid : MonoBehaviour
 {
+    public PathfindingManager pathfindingManager;
+    public AStar aStar;
+
     public int width = 10;
     public int height = 10;
     public float nodeRadius = 0.5f;  // Radius of each node (used for grid setup)
     public LayerMask obstacleLayer;  // Layer to check for obstacles
+    public LayerMask startLayer;
+    public LayerMask endLayer;
 
     private Node[,] grid;
 
     // Generate a grid of nodes
     public void CreateGrid()
     {
+        Vector2Int startPos = new Vector2Int();
+        Vector2Int endPos= new Vector2Int();
         grid = new Node[width, height];
         Debug.Log("Creating grid...");
 
@@ -20,9 +28,22 @@ public class MazeGrid : MonoBehaviour
         {
             for (int y = 0; y < height; y++)
             {
-                Vector2 worldPos = new Vector2(x * nodeRadius * 2, y * nodeRadius * 2);
+                Vector2 worldPos = new Vector2(x * nodeRadius * 2 + nodeRadius, y * nodeRadius * 2 + nodeRadius);
                 bool isWalkable = !Physics2D.OverlapCircle(worldPos, nodeRadius, obstacleLayer);
                 grid[x, y] = new Node(new Vector2Int(x, y), isWalkable);
+
+                //check for start and end positions, then add them to the pathfinding manager
+                if (Physics2D.OverlapCircle(worldPos, nodeRadius, startLayer))
+                {
+                    //pathfindingManager.startPosition = new Vector2Int(x, y);
+                    startPos = new Vector2Int(x, y);
+                }
+
+                if (Physics2D.OverlapCircle(worldPos, nodeRadius, endLayer))
+                {
+                    //pathfindingManager.targetPosition = new Vector2Int(x, y);
+                    endPos = new Vector2Int(x, y);
+                }
 
                 // Log each node's position and walkability
                 Debug.Log($"Node ({x}, {y}) - Walkable: {isWalkable}");
@@ -30,6 +51,7 @@ public class MazeGrid : MonoBehaviour
         }
 
         DrawGrid();
+        aStar.FindPath(startPos, endPos);
     }
 
     public Node GetNode(Vector2Int position)

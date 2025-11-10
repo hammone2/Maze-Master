@@ -4,8 +4,6 @@ using UnityEngine;
 public class AStar : MonoBehaviour
 {
     public MazeGrid grid;
-    public Vector2Int startPos;
-    public Vector2Int targetPos;
 
     private List<Node> openList = new List<Node>();
     private List<Node> closedList = new List<Node>();
