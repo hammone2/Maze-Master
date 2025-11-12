@@ -3,8 +3,16 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
-    public void sceneChange(string sceneName)
+    [SerializeField] private string sceneName;
+
+    public void sceneChange()
     {
         SceneManager.LoadScene(sceneName);
+    }
+
+    public void ReloadScene()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
     }
 }

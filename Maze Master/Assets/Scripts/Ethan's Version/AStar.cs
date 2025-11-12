@@ -8,13 +8,22 @@ public class AStar : MonoBehaviour
     private List<Node> openList = new List<Node>();
     private List<Node> closedList = new List<Node>();
 
-    public void FindPath(Vector2Int start, Vector2Int target)
+    private Vector2Int startPoint;
+    private Vector2Int endPoint;
+
+    public void SetPoints(Vector2Int start, Vector2Int target)
+    {
+        startPoint = start;
+        endPoint = target;
+    }
+
+    public void FindPath(/*Vector2Int start, Vector2Int target*/)
     {
         openList.Clear();
         closedList.Clear();
 
-        Node startNode = grid.GetNode(start);
-        Node targetNode = grid.GetNode(target);
+        Node startNode = grid.GetNode(startPoint);
+        Node targetNode = grid.GetNode(endPoint);
 
         if (startNode == null)
         {

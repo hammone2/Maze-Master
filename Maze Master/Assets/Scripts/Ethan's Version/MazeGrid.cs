@@ -51,7 +51,7 @@ public class MazeGrid : MonoBehaviour
         }
 
         DrawGrid();
-        aStar.FindPath(startPos, endPos);
+        aStar.SetPoints(startPos, endPos);
     }
 
     public Node GetNode(Vector2Int position)
